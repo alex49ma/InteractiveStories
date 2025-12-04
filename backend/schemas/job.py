@@ -7,7 +7,7 @@ class StoryJobBase(BaseModel):
     theme: str
 
 
-class StoryJobResponse(BaseModel)
+class StoryJobResponse(BaseModel):
     job_id: int
     status: str
     created_at: datetime
