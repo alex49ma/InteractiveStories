@@ -49,6 +49,7 @@ def create_story(
         request.theme, 
         session_id
     )
+    return job
 
 def generate_story_task(job_id: str, theme: str, session_id: str):
     db = SessionLocal()
