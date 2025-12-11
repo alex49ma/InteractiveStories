@@ -32,9 +32,14 @@ class StoryGenerator:
         
         raw_response = llm.invoke(prompt.invoke({}))
 
+        print(f"DEBUG: LLM Raw Response Type: {type(raw_response)}")
+        print(f"DEBUG: LLM Raw Response: {raw_response}")
+
         response_text = raw_response
         if hasattr(raw_response, "content"):
             response_text = raw_response.content
+
+        print(f"DEBUG: Extracted Response Text: {response_text!r}")
 
         story_structure = story_parser.parse(response_text)
 
