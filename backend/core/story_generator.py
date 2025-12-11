@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from core.config import settings
 
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 
@@ -13,7 +13,7 @@ class StoryGenerator:
 
     @classmethod
     def _get_llm(cls):
-        return ChatGoogleGenerativeAI(model="gemini-3-pro-preview")
+        return ChatOpenAI(base_url=settings.BASE_URL, api_key=settings.GEMINI_API_KEY, model="google/gemma-3-12b")
 
     @classmethod
     def generate_story(cls, db: Session, session_id, theme: str = "fantasy") -> Story:
@@ -81,6 +81,6 @@ class StoryGenerator:
                    })
             
             node.options = options_list
-            
+
         db.flush()
         return node

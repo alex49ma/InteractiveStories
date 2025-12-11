@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: str =""
 
     GEMINI_API_KEY: str
+    BASE_URL: str = "http://localhost:1234/v1"
     
     @field_validator("ALLOWED_ORIGINS")
     def parse_allowed_origins(cls, v: str) -> str:
